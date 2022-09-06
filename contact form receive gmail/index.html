@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Indipups</title>
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false ">
+            <h3>Get in touch!!</h3>
+            <input type="text" placeholder="Name" id="name" required>
+            <input type="email" placeholder="Email" id="email" required>
+            <input type="phone" placeholder="Phone" id="phone" required>
+            <textarea id="message" rows="6" placeholder="How can we help you?"></textarea>
+            <button type="submit">Send</button>
+
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    
+    <script>
+        function sendEmail(){
+            const name=document.getElementById('name').value;
+            Email.send({
+                // SecureToken : "b25a0129-b80c-4728-8c66-79a8b572ebe3",
+                Host : "smtp.gmail.com",
+                Username : "honeylakhara91111@gmail.com",
+                Password : "284431617honey",
+                To : "honeylakhara91111@gmail.com",
+                From : document.getElementById('email').value,
+                Subject : `contact form enquiry by ${name}`,
+                Body : 'some body'
+            }).then(
+                message => alert("Message sent successfully")
+            );
+        }
+    </script>
+</body>
+</html>
